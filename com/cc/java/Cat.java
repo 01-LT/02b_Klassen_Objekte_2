@@ -6,44 +6,56 @@ public class Cat {
   private String furColor;
   private int age; 
 
-public Cat(String name, String furColor, int age) {
+  private boolean isFemale;
+  private int counter;
+
+public Cat(String name, String furColor, int age, boolean isFemale) {
     this.name = name;
     this.furColor = furColor;
     this.age = age;
+    this.isFemale = isFemale;
   }
 
-public String getName() {
-  if (checkPermission()) {
-    return name;
+public String getStringAttributes(String op) {
+  switch (op) {
+    case "#name":
+      return name;
+    case "#color":
+      return furColor;
+    default:
+      return "ERROR!";
+  }
+}
+
+public String getAge() {
+  if (isFemale) {
+    return checkEscalationLevel();
   } else {
-    return "Sorry, no permission!";
+    return String.valueOf(age);
   }
 }
 
-public void setName(String name) {
-  this.name = name;
+private String checkEscalationLevel() {
+
+counter++;
+
+ switch (counter) {
+    case 1:
+      return "This is an inappropriate question!";
+    case 2:
+     return "I've told you once!";
+    case 3:
+     return "Talk to the hand!";
+    default:
+      return "1#!?&&";
+   
+ }
 }
 
-public String getFurColor() {
-  return furColor;
-}
 
-public void setFurColor(String furColor) {
-  if (checkPermission()) {
-    this.furColor = furColor;
-  }
-}
 
-public int getAge() {
-  return age;
-}
+  
+} 
 
-public void setAge(int age) {
-  this.age = age;
-}
 
-private boolean checkPermission() {
-  return false;
-}
     
-}
