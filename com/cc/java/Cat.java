@@ -37,7 +37,10 @@ public String getAge() {
 
 private String checkEscalationLevel() {
 
-counter++;
+  counter++; // +1 
+  if (counter > 2) {
+    counter = 1;
+  }
 
  switch (counter) {
     case 1:
